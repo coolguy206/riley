@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Riley Ephrem Damo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+		* {padding:0; margin:0;}
+		body {background:#000;}
+		#riley {position: relative; width:40%; margin: 3% auto;}
+		#riley img{
+			box-sizing: border-box;
+			max-width:100%;
+			position: absolute;
+			border: 1em solid #fff;
+		}
+		@media screen and (max-width:736px) {
+			#riley {width:100%; margin: 10% auto;}
+			#riley img {border:.5em solid #fff;}
+		}
+		</style>
+	</head>
+
+	<body>
+		<div id="riley"></div>
+	<script src="riley.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		$.each(riley, function(i, val){
+			$('#riley').append("<img src='"+ val +"'>");
+
+		});
+
+		$('#riley img').hide();
+		$('#riley img:first').show().addClass('active');
+
+	var loopIt = function() {
+		$('.active').removeClass('active').fadeOut(2000).next().fadeIn(2000).addClass('active');
+		$('#riley img:first').insertAfter('#riley img:last');
+	
+	};
+
+	setInterval(loopIt, 4000);
+		
+	</script>
+
+	</body>
+</html>
